@@ -21,7 +21,7 @@ class ArrayAccess implements \ArrayAccess
      */
     public function offsetGet($offset)
     {
-        return $this->values[$offset];
+        return $this->values[$offset] ?? null;
     }
 
     public function offsetSet($offset, $value): void
