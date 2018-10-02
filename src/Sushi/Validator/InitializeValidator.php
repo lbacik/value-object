@@ -12,13 +12,10 @@ class InitializeValidator implements ValidatorInterface
 {
     public function validate(ValueObject $valueObject): void
     {
-        array_walk(
-            $valueObject->getKeys(),
-            function ($item) use ($valueObject) {
-                if (!$valueObject->offsetExists($item)) {
-                    throw NotInitializedKeyException::key($item);
-                }
+        foreach($valueObject->getKeys() as $item) {
+            if (!$valueObject->offsetExists($item)) {
+                throw NotInitializedKeyException::key($item);
             }
-        );
+        }
     }
 }

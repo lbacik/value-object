@@ -12,15 +12,13 @@ class KeysValidator implements ValidatorInterface
 {
     public function validate(ValueObject $valueObject): void
     {
-        $keys = $valueObject->getKeys();
+        $declaredKeys = $valueObject->getKeys();
+        $keys = array_keys($valueObject->toArray());
 
-        array_walk(
-            array_keys($valueObject->toArray()),
-            function ($item) use ($keys) {
-                if (!in_array($item, $keys)) {
-                    throw NotExistingKeyException::key($item);
-                }
+        foreach($keys as $item) {
+            if (!in_array($item, $declaredKeys)) {
+                throw NotExistingKeyException::key($item);
             }
-        );
+        }
     }
 }
