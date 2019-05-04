@@ -108,6 +108,25 @@ class ValueObjectTest extends TestCase
         );
     }
 
+    /**
+     * @dataProvider toArrayData
+     */
+    public function testToArrayWithAssociativeKeys(array $values, array $expected)
+    {
+        $valueObject = new class($values) extends ValueObject {
+            protected $validators = ValueObjectTest::VALIDATORS;
+            protected $keys = [
+                'foo' => 'some information for validator',
+                'bar' => '',
+            ];
+        };
+
+        $this->assertSame(
+            $expected,
+            $valueObject->toArray()
+        );
+    }
+
     public function toArrayData(): array
     {
         return [
