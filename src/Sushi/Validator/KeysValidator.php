@@ -15,8 +15,8 @@ class KeysValidator implements ValidatorInterface
         $declaredKeys = $valueObject->getKeys();
         $keys = array_keys($valueObject->toArray());
 
-        foreach($keys as $item) {
-            if (!in_array($item, $declaredKeys)) {
+        foreach ($keys as $item) {
+            if (in_array($item, $declaredKeys) === false) {
                 throw NotExistingKeyException::key($item);
             }
         }

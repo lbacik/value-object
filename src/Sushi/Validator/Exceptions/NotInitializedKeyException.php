@@ -6,7 +6,7 @@ namespace Sushi\Validator\Exceptions;
 
 class NotInitializedKeyException extends \RuntimeException
 {
-    static function key(string $key): NotInitializedKeyException
+    public static function key(string $key): self
     {
         return new static('Not initialised key: ' . $key);
     }

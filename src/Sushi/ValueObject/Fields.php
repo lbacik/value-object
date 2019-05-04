@@ -12,7 +12,7 @@ class Fields extends ArrayAccess
     {
         return array_reduce(
             array_merge($this->getKeys(), array_keys($this->getValues())),
-            function($result, $item) {
+            function ($result, $item) {
                 $result[$item] = $this[$item];
                 return $result;
             },

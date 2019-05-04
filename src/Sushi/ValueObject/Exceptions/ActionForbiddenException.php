@@ -6,7 +6,7 @@ namespace Sushi\ValueObject\Exceptions;
 
 class ActionForbiddenException extends \RuntimeException
 {
-    static function create(): ActionForbiddenException
+    public static function create(): self
     {
         return new static('This action is denied in ValueObject context');
     }

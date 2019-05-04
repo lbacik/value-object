@@ -6,7 +6,7 @@ namespace Sushi\Validator\Exceptions;
 
 class NotExistingKeyException extends \RuntimeException
 {
-    static function key(string $key): NotExistingKeyException
+    public static function key(string $key): self
     {
         return new static('Trying to set non defined key: ' . $key);
     }

@@ -12,8 +12,8 @@ class InitializeValidator implements ValidatorInterface
 {
     public function validate(ValueObject $valueObject): void
     {
-        foreach($valueObject->getKeys() as $item) {
-            if (!$valueObject->offsetExists($item)) {
+        foreach ($valueObject->getKeys() as $item) {
+            if ($valueObject->offsetExists($item) === false) {
                 throw NotInitializedKeyException::key($item);
             }
         }

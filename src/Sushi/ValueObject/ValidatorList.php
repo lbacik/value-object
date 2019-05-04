@@ -23,6 +23,6 @@ class ValidatorList extends Iterator
 
     public static function create(): ValidatorList
     {
-        return new self();
+        return new static();
     }
 }
