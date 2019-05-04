@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Sushi;
 
-use Sushi\ValueObject\Validation;
+use Sushi\ValueObject\Comparison;
 
-class ValueObject extends Validation
+class ValueObject extends Comparison
 {
     public function __construct(array $values)
     {
@@ -15,14 +15,21 @@ class ValueObject extends Validation
         $this->validate();
     }
 
-    public function equal(ValueObject $other): bool
+    public function isEqual(ValueObject $other): bool
     {
-        $result = array_diff(
-            $this->toArray(),
-            $other->toArray()
-        );
+        $result = true;
+        $a = $this->toArray();
+        $b = $other->toArray();
 
-        return count($result) === 0 ? true : false;
+        foreach ($a as $key => $item) {
+            if (isset($b[$key]) === false || $this->compare($item, $b[$key]) === false) {
+                $result = false;
+                break;
+            }
+            unset($a[$key], $b[$key]);
+        }
+
+        return $result === true ? count($b) === 0 : $result;
     }
 
     public function set(array $data): ValueObject
