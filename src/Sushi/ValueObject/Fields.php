@@ -28,14 +28,6 @@ class Fields extends ArrayAccess
         return $this->keys;
     }
 
-    public function getKeysWithDefinitions(): array
-    {
-        if ($this->isAssociative($this->keys)) {
-            return $this->keys;
-        }
-        return [];
-    }
-
     private function isAssociative(array $arr): bool
     {
         foreach ($arr as $key => $value) {
