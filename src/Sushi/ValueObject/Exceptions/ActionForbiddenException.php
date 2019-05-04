@@ -8,6 +8,6 @@ class ActionForbiddenException extends \RuntimeException
 {
     public static function create(): self
     {
-        return new static('This action is denied in ValueObject context');
+        return new static('This action has been blocked in ValueObject context');
     }
 }

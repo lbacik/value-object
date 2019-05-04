@@ -8,6 +8,11 @@ class NotAValidatorException extends \RuntimeException
 {
     public static function create(string $class): NotAValidatorException
     {
-        return new static(sprintf('Class %s does not implement the ValidatorInterface', $class));
+        return new static(
+            sprintf(
+                'Validator class %s MUST implement the \Sushi\ValidatorInterface',
+                $class
+            )
+        );
     }
 }

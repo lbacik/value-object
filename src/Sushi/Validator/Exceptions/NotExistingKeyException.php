@@ -8,6 +8,6 @@ class NotExistingKeyException extends \RuntimeException
 {
     public static function key(string $key): self
     {
-        return new static('Trying to set non defined key: ' . $key);
+        return new static('Cannot set undefined key: ' . $key);
     }
 }
