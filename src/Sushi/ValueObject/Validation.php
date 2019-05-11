@@ -4,17 +4,12 @@ declare(strict_types=1);
 
 namespace Sushi\ValueObject;
 
-class Validation extends Fields
+trait Validation
 {
     protected $validators = [];
 
     /** @var ValidatorList */
     private $validatorList = null;
-
-    public function __construct()
-    {
-        $this->instantiateValidators();
-    }
 
     private function instantiateValidators(): void
     {

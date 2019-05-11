@@ -4,13 +4,20 @@ declare(strict_types=1);
 
 namespace Sushi;
 
-use Sushi\ValueObject\Comparison;
+use Sushi\ValueObject\{
+    Validation,
+    Comparison,
+    Fields
+};
 
-class ValueObject extends Comparison
+class ValueObject extends Fields
 {
+    use Comparison;
+    use Validation;
+
     public function __construct(array $values)
     {
-        parent::__construct();
+        $this->instantiateValidators();
         $this->setValues($values);
         $this->validate();
     }

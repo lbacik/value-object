@@ -6,7 +6,7 @@ namespace Sushi\ValueObject;
 
 use Sushi\ValueObject;
 
-class Comparison extends Validation
+trait Comparison
 {
     /**
      * @param mixed $a
