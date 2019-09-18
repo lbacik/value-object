@@ -11,22 +11,15 @@ class FieldTest extends TestCase
 {
     public function testToArray(): void
     {
-        $vo = $this->createVOClass($array = ['foo' => 'bar']);
+        $vo = new ValueObject($array = ['foo' => 'bar']);
         $this->assertSame($array, $vo->toArray());
     }
 
     public function testToArrayDeep(): void
     {
-        $foo = $this->createVOClass($fooArr = ['foo' => 'bar']);
-        $bar = $this->createVOClass(['bar' => $foo]);
+        $foo = new ValueObject($fooArr = ['foo' => 'bar']);
+        $bar = new ValueObject(['bar' => $foo]);
 
         $this->assertSame(['bar' => $fooArr], $bar->toArray());
-    }
-
-    private function createVOClass(array $data): ValueObject
-    {
-        return new class($data) extends ValueObject
-        {
-        };
     }
 }
