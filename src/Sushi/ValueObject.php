@@ -42,7 +42,7 @@ class ValueObject extends Fields
     public function set(array $data): ValueObject
     {
         $clone = clone $this;
-        $clone->setValues(array_merge($this->toArray(), $data));
+        $clone->setValues(array_merge($this->getValues(), $data));
         $clone->validate();
 
         return $clone;

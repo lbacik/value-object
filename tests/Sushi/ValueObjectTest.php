@@ -75,6 +75,19 @@ class ValueObjectTest extends TestCase
         $this->assertSame($vo2['notExisting'], 'foo');
     }
 
+    public function testSetWithNestedData(): void
+    {
+        $vo1 = new ValueObject(['foo' => 'bar']);
+        $vo2 = $this->getValueObject(['foo' => $vo1]);
+        $vo3 = $vo2->set([
+            'bar' => 'data',
+        ]);
+
+        $this->assertInstanceOf(ValueObject::class, $vo3);
+        $this->assertSame($vo3['bar'], 'data');
+        $this->assertSame($vo3['foo'], $vo1);
+    }
+
     public function testDirectSet()
     {
         $this->expectException(ActionForbiddenException::class);
