@@ -25,8 +25,8 @@ class ValueObject extends Fields
     public function isEqual(ValueObject $other): bool
     {
         $result = true;
-        $a = $this->toArray();
-        $b = $other->toArray();
+        $a = $this->getValues();
+        $b = $other->getValues();
 
         foreach ($a as $key => $item) {
             if (isset($b[$key]) === false || $this->compare($item, $b[$key]) === false) {
