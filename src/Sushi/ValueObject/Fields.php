@@ -13,7 +13,11 @@ class Fields extends ArrayAccess
         return array_reduce(
             array_merge($this->getKeys(), array_keys($this->getValues())),
             function ($result, $item) {
-                $result[$item] = $this[$item];
+                if (($value = $this[$item]) instanceof Fields) {
+                    $result[$item] = $value->toArray();
+                } else {
+                    $result[$item] = $value;
+                }
                 return $result;
             },
             []
