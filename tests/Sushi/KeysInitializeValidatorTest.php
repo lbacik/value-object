@@ -17,17 +17,17 @@ use Sushi\ValueObject;
 
 class KeysInitializeValidatorTest extends TestCase
 {
-    const VALIDATORS = [
+    public const VALIDATORS = [
         KeysValidator::class,
         InitializeValidator::class,
     ];
 
-    const KEYS = [
+    public const KEYS = [
         'foo',
         'bar',
     ];
 
-    const EXAMPLE_DATA = [
+    public const EXAMPLE_DATA = [
         'foo' => 'foo data',
         'bar' => 'bar data',
     ];
@@ -73,7 +73,7 @@ class KeysInitializeValidatorTest extends TestCase
         $this->assertSame(null, $vo['notExisting']);
     }
 
-    private function getValueObject(array $values)
+    private function getValueObject(array $values): ValueObject
     {
         return new class ($values) extends ValueObject {
             protected $validators = KeysInitializeValidatorTest::VALIDATORS;

@@ -11,7 +11,7 @@ use Sushi\Validator\Exceptions\NotExistingKeyException as ValidatorNotExistingKe
 
 class EmptyValidateValueObjectTest extends TestCase
 {
-    const VALIDATORS = [
+    public const VALIDATORS = [
         KeysValidator::class,
     ];
 
@@ -59,7 +59,7 @@ class EmptyValidateValueObjectTest extends TestCase
         ];
     }
 
-    private function getValueObject(array $values)
+    private function getValueObject(array $values): ValueObject
     {
         return new class ($values) extends ValueObject {
             protected $validators = EmptyValidateValueObjectTest::VALIDATORS;

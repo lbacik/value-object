@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Sushi;
 
 use PHPUnit\Framework\TestCase;
+use stdClass;
 use Sushi\ValueObject;
 
 class ValueObjectEqualTest extends TestCase
@@ -95,7 +96,7 @@ class ValueObjectEqualTest extends TestCase
 
     public function testObjects()
     {
-        $obj = new() \stdClass();
+        $obj = new stdClass();
 
         $foo = new ValueObject([
             'foo' => $obj,
@@ -110,10 +111,10 @@ class ValueObjectEqualTest extends TestCase
     public function testObjects2()
     {
         $foo = new ValueObject([
-            'foo' => new() \stdClass(),
+            'foo' => new stdClass(),
         ]);
         $bar = new ValueObject([
-            'foo' => new() \stdClass(),
+            'foo' => new stdClass(),
         ]);
 
         $this->assertFalse($foo->isEqual($bar));
