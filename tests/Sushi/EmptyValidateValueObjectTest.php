@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tests\Sushi;
 
 use PHPUnit\Framework\TestCase;
-
 use Sushi\Validator\KeysValidator;
 use Sushi\ValueObject;
 use Sushi\Validator\Exceptions\NotExistingKeyException as ValidatorNotExistingKeyException;

@@ -29,7 +29,7 @@ trait Comparison
     /**
      * @param mixed $value
      */
-    private function ifArrayThenSortArrayKeys(& $value): void
+    private function ifArrayThenSortArrayKeys(&$value): void
     {
         if (is_array($value)) {
             ksort($value);

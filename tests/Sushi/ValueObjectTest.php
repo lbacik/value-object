@@ -10,14 +10,14 @@ use Sushi\ValueObject\Exceptions\ActionForbiddenException;
 
 class ValueObjectTest extends TestCase
 {
-    const VALIDATORS = [];
+    public const VALIDATORS = [];
 
-    const KEYS = [
+    public const KEYS = [
         'foo',
         'bar',
     ];
 
-    const EXAMPLE_DATA = [
+    public const EXAMPLE_DATA = [
         'foo' => 'foo data',
         'bar' => 'bar data',
     ];
@@ -126,7 +126,7 @@ class ValueObjectTest extends TestCase
      */
     public function testToArrayWithAssociativeKeys(array $values, array $expected)
     {
-        $valueObject = new class($values) extends ValueObject {
+        $valueObject = new class ($values) extends ValueObject {
             protected $validators = ValueObjectTest::VALIDATORS;
             protected $keys = [
                 'foo' => 'some information for validator',
@@ -183,7 +183,7 @@ class ValueObjectTest extends TestCase
         ];
     }
 
-    private function getValueObject(array $values)
+    private function getValueObject(array $values): ValueObject
     {
         return new class ($values) extends ValueObject {
             protected $validators = ValueObjectTest::VALIDATORS;
