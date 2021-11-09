@@ -1,6 +1,7 @@
 # Value Object implementation
 
-[![Build Status](https://travis-ci.com/lbacik/value-object.svg?branch=master)](https://travis-ci.com/lbacik/value-object)
+[![PHP Composer](https://github.com/lbacik/value-object/actions/workflows/php.yml/badge.svg)](https://github.com/lbacik/value-object/actions/workflows/php.yml)
+[![codecov](https://codecov.io/gh/lbacik/value-object/branch/master/graph/badge.svg?token=B17DQFNKRM)](https://codecov.io/gh/lbacik/value-object)
 
 ## Instalation
 
