@@ -159,4 +159,17 @@ class ValueObjectEqualTest extends TestCase
 
         $this->assertFalse($foo->isEqual($bar));
     }
+
+    public function testValueNull(): void
+    {
+        $vo1 = new ValueObject([
+            'item' => null
+        ]);
+
+        $vo2 = new ValueObject([
+           'item' => null
+        ]);
+
+        $this->assertTrue($vo1->isEqual($vo2));
+    }
 }
