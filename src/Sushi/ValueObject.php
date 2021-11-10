@@ -29,7 +29,7 @@ class ValueObject extends Fields
         $b = $other->getValues();
 
         foreach ($a as $key => $item) {
-            if (isset($b[$key]) === false || $this->compare($item, $b[$key]) === false) {
+            if (array_key_exists($key, $b) === false || $this->compare($item, $b[$key]) === false) {
                 $result = false;
                 break;
             }
