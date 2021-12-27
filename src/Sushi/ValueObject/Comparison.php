@@ -8,11 +8,7 @@ use Sushi\ValueObject;
 
 trait Comparison
 {
-    /**
-     * @param mixed $a
-     * @param mixed $b
-     */
-    protected function compare($a, $b): bool
+    protected function compare(mixed $a, mixed $b): bool
     {
         if ($a instanceof ValueObject && $b instanceof ValueObject) {
             $result = $a->isEqual($b);
@@ -26,10 +22,7 @@ trait Comparison
         return $result;
     }
 
-    /**
-     * @param mixed $value
-     */
-    private function ifArrayThenSortArrayKeys(&$value): void
+    private function ifArrayThenSortArrayKeys(mixed &$value): void
     {
         if (is_array($value)) {
             ksort($value);

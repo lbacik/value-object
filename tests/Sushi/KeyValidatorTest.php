@@ -109,8 +109,8 @@ class KeyValidatorTest extends TestCase
     private function getValueObject(array $values): ValueObject
     {
         return new class ($values) extends ValueObject {
-            protected $validators = KeyValidatorTest::VALIDATORS;
-            protected $keys = KeyValidatorTest::KEYS;
+            protected array $validators = KeyValidatorTest::VALIDATORS;
+            protected array $keys = KeyValidatorTest::KEYS;
         };
     }
 }

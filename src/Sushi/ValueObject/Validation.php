@@ -6,10 +6,8 @@ namespace Sushi\ValueObject;
 
 trait Validation
 {
-    protected $validators = [];
-
-    /** @var ValidatorList */
-    private $validatorList = null;
+    protected array $validators = [];
+    private ?ValidatorList $validatorList = null;
 
     private function instantiateValidators(): void
     {

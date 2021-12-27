@@ -6,7 +6,7 @@ namespace Sushi\ValueObject;
 
 class Fields extends ArrayAccess
 {
-    protected $keys = [];
+    protected array $keys = [];
 
     public function toArray(): array
     {

@@ -62,7 +62,7 @@ class EmptyValidateValueObjectTest extends TestCase
     private function getValueObject(array $values): ValueObject
     {
         return new class ($values) extends ValueObject {
-            protected $validators = EmptyValidateValueObjectTest::VALIDATORS;
+            protected array $validators = EmptyValidateValueObjectTest::VALIDATORS;
         };
     }
 }

@@ -127,8 +127,8 @@ class ValueObjectTest extends TestCase
     public function testToArrayWithAssociativeKeys(array $values, array $expected)
     {
         $valueObject = new class ($values) extends ValueObject {
-            protected $validators = ValueObjectTest::VALIDATORS;
-            protected $keys = [
+            protected array $validators = ValueObjectTest::VALIDATORS;
+            protected array $keys = [
                 'foo' => 'some information for validator',
                 'bar' => '',
             ];
@@ -186,8 +186,8 @@ class ValueObjectTest extends TestCase
     private function getValueObject(array $values): ValueObject
     {
         return new class ($values) extends ValueObject {
-            protected $validators = ValueObjectTest::VALIDATORS;
-            protected $keys = ValueObjectTest::KEYS;
+            protected array $validators = ValueObjectTest::VALIDATORS;
+            protected array $keys = ValueObjectTest::KEYS;
         };
     }
 }

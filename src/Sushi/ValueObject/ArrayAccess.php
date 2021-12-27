@@ -8,7 +8,7 @@ use Sushi\ValueObject\Exceptions\ActionForbiddenException;
 
 class ArrayAccess implements \ArrayAccess
 {
-    private $values = [];
+    private array $values = [];
 
     public function offsetExists($offset): bool
     {
