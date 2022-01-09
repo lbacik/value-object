@@ -14,8 +14,8 @@ class ValueObjectPKeys extends ValueObject
         InitializeValidator::class,
     ];
 
-    public static function create(...$values): static
+    public function __construct(...$values)
     {
-        return new static($values);
+        parent::__construct($values);
     }
 }
