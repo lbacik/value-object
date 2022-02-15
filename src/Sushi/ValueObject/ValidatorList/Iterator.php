@@ -6,14 +6,11 @@ namespace Sushi\ValueObject\ValidatorList;
 
 class Iterator implements \Iterator
 {
-    private $position = 0;
+    private int $position = 0;
 
-    protected $elements = [];
+    protected array $elements = [];
 
-    /**
-     * @return mixed
-     */
-    public function current()
+    public function current(): mixed
     {
         return $this->elements[$this->position];
     }
@@ -28,12 +25,12 @@ class Iterator implements \Iterator
         return isset($this->elements[$this->position]);
     }
 
-    public function rewind()
+    public function rewind(): void
     {
         $this->position = 0;
     }
 
-    public function next()
+    public function next(): void
     {
         ++$this->position;
     }
