@@ -1,8 +1,8 @@
 {
   "name": "lbacik/value-object",
-  "description": "Library implementing simple Value Object solution",
+  "description": "Simple Value Object implementation",
   "type": "library",
-  "license": "LGPL-3.0-or-later",
+  "license": "LGPL-2.0-or-later",
   "authors": [
     {
       "name": "Łukasz Bacik",
