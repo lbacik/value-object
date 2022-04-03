@@ -5,23 +5,19 @@ declare(strict_types=1);
 namespace Sushi;
 
 use Sushi\ValueObject\{
+    Exceptions\ValueObjectException,
     Fields,
     Invariants,
-    Validation,
     Comparison
 };
 
 class ValueObject extends Fields
 {
     use Comparison;
-    use Validation;
     use Invariants;
 
-    public function __construct(array $values)
+    public function __construct()
     {
-        $this->instantiateValidators();
-        $this->setValues($values);
-        $this->validate();
         $this->checkInvariants();
     }
 
@@ -44,27 +40,16 @@ class ValueObject extends Fields
 
     public function set(...$data): ValueObject
     {
-        if (count($data) === 1 && array_key_exists(0, $data) && is_array($data[0])) {
-            $result = $this->setArray($data[0]);
-        } else {
-            $result = $this->setArray($data);
+        $values = $this->getValues();
+        $keys = array_keys($values);
+
+        foreach ($data as $key => $value) {
+            if (!in_array($key, $keys)) {
+                throw ValueObjectException::fieldNotFound($key);
+            }
+            $values[$key] = $value;
         }
 
-        return $result;
-    }
-
-    private function setArray(array $data): ValueObject
-    {
-        $clone = clone $this;
-        $clone->setValues(array_merge($this->getValues(), $data));
-        $clone->validate();
-        $clone->checkInvariants();
-
-        return $clone;
-    }
-
-    public function get(string $key): mixed
-    {
-        return $this->offsetGet($key);
+        return new static(...$values);
     }
 }
