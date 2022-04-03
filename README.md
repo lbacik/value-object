@@ -18,35 +18,38 @@ The below example uses assertion, but it is not mandatory of course :)
 declare(strict_types=1);
 
 use Sushi\ValueObject\Invariant;
-use Sushi\ValueObjectDKeys;
+use Sushi\ValueObject;
+
 use function PHPUnit\Framework\assertGreaterThanOrEqual;
 use function PHPUnit\Framework\assertIsInt;
 use function PHPUnit\Framework\assertIsString;
 
-class ExampleValueObject extends ValueObjectDKeys
+class ExampleValueObject extends ValueObject
 {
+    private const NAME_MIN_LENGTH = 4;
+
     public function __construct(
         public readonly string $name,
         public readonly int $age
     ) {
         parent::__construct();
     }
-        
+
     #[Invariant]
     protected function validateName(): void
     {
-        assertIsString($this->name);
+        assertGreaterThanOrEqual(self::NAME_MIN_LENGTH, mb_strlen($this->name));
     }
-    
+
     #[Invariant]
     protected function validateAge(): void
     {
         assertIsInt($this->age);
-        assertGreaterThanOrEqual(0, $this->age);    
+        assertGreaterThanOrEqual(0, $this->age);
     }
 }
 
-$valueObjectOne = new ExampleValueObject(name: "Foo", age: 30);
+$valueObjectOne = new ExampleValueObject(name: "FooBar", age: 30);
 ```
 
 For **more information** please visit: https://lbacik.github.io/php-sushi (should be updated soon!)
