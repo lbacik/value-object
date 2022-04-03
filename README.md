@@ -12,7 +12,7 @@ To install it you can use [composer](https://getcomposer.org):
 
 ## Example
 
-This example uses assertion, but it is not "THE MUST" of course :)
+The below example uses assertion, but it is not mandatory of course :)
 
 ```php
 declare(strict_types=1);
